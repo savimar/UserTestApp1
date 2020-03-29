@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using UserTestApp.Models
+@model IEnumerable<UserTestApp.Models.User>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td><td>Адрес</td><td>Роль</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.FirstName  @item.LastName</td><td>@item.Age</td><td>@item.Address</td><td>@item.Role.Name</td></tr>
+    }
+</table>
+ +
