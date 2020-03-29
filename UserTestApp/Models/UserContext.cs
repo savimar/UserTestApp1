@@ -47,7 +47,8 @@ namespace UserTestApp.Models
                         Age = 30,
                         RoleId = 10
 
-                    }, new User
+                    }, 
+               new User
                     {
                         Id = 2,
                         FirstName = "Admin",
