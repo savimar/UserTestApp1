@@ -26,7 +26,8 @@ namespace UserTestApp
         {
             services.AddMvc();
             services.AddEntityFrameworkSqlite()
-                .AddDbContext<UserContext>(options => options.UseSqlite(@"Data Source=UserDB.db;"));
+                .AddDbContext<UserContext>(options =>
+                    options.UseSqlite(@"Data Source=UserDB.db;"));
 
             services.AddControllersWithViews();
         }

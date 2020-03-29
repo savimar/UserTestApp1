@@ -12,7 +12,6 @@ namespace UserTestApp.Controllers
 {
     public class HomeController : Controller
     {
-
         private UserContext db;
 
         public HomeController(UserContext context)
@@ -21,8 +20,12 @@ namespace UserTestApp.Controllers
            
         }
 
-       
-       
+        public async Task<IActionResult> Index()
+        {
+            return View(await db.Users.
+                Include(u => u.Role).ToListAsync());
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -34,16 +37,9 @@ namespace UserTestApp.Controllers
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
-        public async Task<IActionResult> Index()
-        {
-            var roles = db.Roles.ToList();
-            return View(await db.Users.Include(u=>u.Role).ToListAsync());
-        }
+        
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        
 
        
     }
