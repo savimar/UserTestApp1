@@ -14,6 +14,7 @@ namespace UserTestApp.Models
             : base(dbContextOptions)
         {
           Database.EnsureCreated();
+         
         }
        
 
@@ -44,17 +45,24 @@ namespace UserTestApp.Models
                         Id=1,
                         FirstName = "Ivan",
                         LastName = "Petrov",
-                        Address = "Moscow",
                         Age = 30,
                         RoleId = 10
 
-                    }, 
+                    },
+               new User
+               {
+                   Id = 3,
+                   FirstName = "Nikolay",
+                   LastName = "Sidorov",
+                   Age = 25,
+                   RoleId = 10
+
+               },
                new User
                     {
                         Id = 2,
                         FirstName = "Admin",
                         LastName = "Adminov",
-                        Address = "Russia",
                         Age = 35,
                         RoleId = 20
                         })

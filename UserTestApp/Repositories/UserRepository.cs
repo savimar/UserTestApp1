@@ -9,12 +9,11 @@ namespace UserTestApp.Repositories
 {
     public class UserRepository : IRepository<User>
     {
-
-        private UserContext _db;
+        private readonly UserContext _db;
 
         public UserRepository(UserContext context)
         {
-            this._db = context;
+            _db = context;
         }
 
         public async Task<IEnumerable<User>> GetList()
@@ -24,7 +23,9 @@ namespace UserTestApp.Repositories
 
         public async Task<List<User>> GetListWithRoles()
         {
-            return await _db.Users.Include(u => u.Role).ToListAsync();
+            return await _db.Users.
+                Include(u => u.Role)
+                .ToListAsync();
 
         }
         public async Task<User> GetById(int id)

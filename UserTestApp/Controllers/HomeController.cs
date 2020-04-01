@@ -24,7 +24,7 @@ namespace UserTestApp.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _db.GetListWithRoles());
-            //  .Users.Include(u => u.Role).ToListAsync());
+           
         }
 
         public IActionResult Privacy()
