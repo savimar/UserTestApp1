@@ -8,15 +8,15 @@ namespace UserTestApp.Models
 {
     public class UserContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public List<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public UserContext(DbContextOptions<UserContext> dbContextOptions)
             : base(dbContextOptions)
         {
           Database.EnsureCreated();
         }
-       
 
+        
         protected override void OnConfiguring
             (DbContextOptionsBuilder optionsBuilder)
         {

@@ -7,23 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UserTestApp.Models;
+using UserTestApp.Repository;
 
 namespace UserTestApp.Controllers
 {
     public class HomeController : Controller
     {
-        private UserContext db;
+        private UserRepository _repository;
 
         public HomeController(UserContext context)
         {
-            db = context;
+            _repository = new UserRepository(context);
            
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Users.
-                Include(u => u.Role).ToListAsync());
+            return View((IEnumerable<Models.User>)  _repository.GetList());
         }
 
         public IActionResult Privacy()
