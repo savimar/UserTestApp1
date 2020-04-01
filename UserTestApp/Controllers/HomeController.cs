@@ -12,17 +12,17 @@ namespace UserTestApp.Controllers
 {
     public class HomeController : Controller
     {
-        private UserContext db;
+        private UserContext _db;
 
         public HomeController(UserContext context)
         {
-            db = context;
+            _db = context;
            
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Users.
+            return View(await _db.Users.
                 Include(u => u.Role).ToListAsync());
         }
 
