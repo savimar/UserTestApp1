@@ -23,6 +23,9 @@ namespace UserTestApp.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.UsersAdmins = await _db.GetListByRole(20);
+            ViewBag.UserAlexeys = await _db.GetListByName("Alexey");
+            ViewBag.UsersOlderThen30 = await _db.GetListUsersOlderThen(30);
             return View(await _db.GetListWithRoles());
            
         }

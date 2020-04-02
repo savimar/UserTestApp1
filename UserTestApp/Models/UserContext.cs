@@ -13,7 +13,8 @@ namespace UserTestApp.Models
         public UserContext(DbContextOptions<UserContext> dbContextOptions)
             : base(dbContextOptions)
         {
-          Database.EnsureCreated();
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
          
         }
        
@@ -25,6 +26,7 @@ namespace UserTestApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
             modelBuilder.Entity<Role>().HasData(
                 new Role
                 {
@@ -52,22 +54,41 @@ namespace UserTestApp.Models
                new User
                {
                    Id = 3,
-                   FirstName = "Nikolay",
+                   FirstName = "Alexey",
                    LastName = "Sidorov",
                    Age = 25,
                    RoleId = 10
 
                },
                new User
-                    {
-                        Id = 2,
-                        FirstName = "Admin",
-                        LastName = "Adminov",
-                        Age = 35,
-                        RoleId = 20
-                        })
+               {
+                   Id = 4,
+                   FirstName = "Irina",
+                   LastName = "Ivanova",
+                   Age = 27,
+                   RoleId = 10
+
+               },
+               new User
+               {
+                   Id = 5,
+                   FirstName = "Alexey",
+                   LastName = "Kuznetsov",
+                   Age = 32,
+                   RoleId = 20
+
+               },
+               new User
+               {
+                   Id = 2,
+                   FirstName = "Admin",
+                   LastName = "Adminov",
+                   Age = 35,
+                   RoleId = 20
+               })
                ;
 
         }
+        
     }
 }

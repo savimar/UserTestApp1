@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UserTestApp.Models;
+
+
 
 namespace UserTestApp.Repositories
 {
@@ -28,10 +31,31 @@ namespace UserTestApp.Repositories
                 .ToListAsync();
 
         }
+
+        public async Task<List<User>> GetListByRole(int id)
+        {
+            var users = from u in _db.Users
+                        where u.RoleId == id
+                        select u;
+            return await users.ToListAsync();
+        }
+
+        public async Task<List<User>> GetListUsersOlderThen(int age)
+        {
+            var users = _db.Users
+                .FromSqlInterpolated($"SELECT * FROM Users WHERE age >= {age}");
+            return await users.ToListAsync();
+        }
+
+        public async Task<List<User>> GetListByName(string firstName)
+        {
+            return await _db.Users.Where
+                (u => u.FirstName == firstName).ToListAsync();
+        }
+
         public async Task<User> GetById(int id)
         {
             return await _db.Users.FindAsync(id);
-
         }
 
         public void Create(User user)

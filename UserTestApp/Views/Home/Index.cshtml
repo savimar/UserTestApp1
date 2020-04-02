@@ -6,12 +6,39 @@
 @{
     ViewBag.Title = "Все пользователи";
 }
-
-<table class ="table">
+<p><strong>Все пользователи</strong></p>
+<table class="table">
     <tr><td>Имя</td><td>Возраст</td><td>Роль</td></tr>
     @foreach (var item in Model)
     {
         <tr><td>@item.FirstName  @item.LastName</td><td>@item.Age</td><td>@item.Role.Name</td></tr>
     }
 </table>
- 
+
+<p><strong>Все админы</strong></p>
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td><td>Роль</td></tr>
+    @foreach (var item in ViewBag.UsersAdmins)
+    {
+        <tr><td>@item.FirstName  @item.LastName</td><td>@item.Age</td><td>@item.Role.Name</td></tr>
+    }
+</table>
+
+<p><strong>Все Алексеи</strong></p>
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td><td>Роль</td></tr>
+    @foreach (var item in ViewBag.UserAlexeys)
+    {
+        <tr><td>@item.FirstName  @item.LastName</td><td>@item.Age</td><td>@item.Role.Name</td></tr>
+    }
+</table>
+
+
+<p><strong>Все те, кто достиг 30 лет</strong></p>
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td><td>Роль</td></tr>
+    @foreach (var item in ViewBag.UsersOlderThen30)
+    {
+        <tr><td>@item.FirstName  @item.LastName</td><td>@item.Age</td><td>@item.Role.Name</td></tr>
+    }
+</table>

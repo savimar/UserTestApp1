@@ -59,7 +59,18 @@ namespace UserTestApp.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Age", "FirstName", "LastName", "RoleId" },
-                values: new object[] { 3, 25, "Nikolay", "Sidorov", 10 });
+                values: new object[] { 3, 25, "Alexey", "Sidorov", 10 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Age", "FirstName", "LastName", "RoleId" },
+                values: new object[] { 4, 27, "Irina", "Ivanova", 10 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Age", "FirstName", "LastName", "RoleId" },
+                values: new object[] { 5, 32, "Alexey", "Kuznetsov", 20 });
+
 
             migrationBuilder.InsertData(
                 table: "Users",
