@@ -19,12 +19,12 @@ namespace UserTestApp.Repositories
             _db = context;
         }
 
-        public async Task<IEnumerable<User>> GetList()
+        public async Task<IEnumerable<User>> FindAll()
         {
             return await _db.Users.ToListAsync();
         }
 
-        public async Task<List<User>> GetListWithRoles()
+        public async Task<List<User>> FindAllWithRoles()
         {
             return await _db.Users.
                 Include(u => u.Role)
@@ -32,7 +32,7 @@ namespace UserTestApp.Repositories
 
         }
 
-        public async Task<List<User>> GetListByRole(int id)
+        public async Task<List<User>> FindAllByRole(int id)
         {
             var users = from u in _db.Users
                         where u.RoleId == id
@@ -40,20 +40,20 @@ namespace UserTestApp.Repositories
             return await users.ToListAsync();
         }
 
-        public async Task<List<User>> GetListUsersOlderThen(int age)
+        public async Task<List<User>> FindAlltUsersOlderThen(int age)
         {
             var users = _db.Users
                 .FromSqlInterpolated($"SELECT * FROM Users WHERE age >= {age}");
             return await users.ToListAsync();
         }
 
-        public async Task<List<User>> GetListByName(string firstName)
+        public async Task<List<User>> FindAllByName(string firstName)
         {
             return await _db.Users.Where
                 (u => u.FirstName == firstName).ToListAsync();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User> Find(int id)
         {
             return await _db.Users.FindAsync(id);
         }
